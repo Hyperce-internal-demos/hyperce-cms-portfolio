@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_statistics",
+  "info": {
+    "displayName": "Statistics",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "testimonial": {
+      "displayName": "Testimonial",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.testimonial",
+      "required": true
+    },
+    "cards": {
+      "displayName": "Statistic_card",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.statistic-card",
+      "required": true
+    }
+  }
+}

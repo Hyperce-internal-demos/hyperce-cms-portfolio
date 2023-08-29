@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navbars",
+  "info": {
+    "singularName": "navbar",
+    "pluralName": "navbars",
+    "displayName": "Navbar",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "navbar_items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "actions.button",
+      "required": true
+    },
+    "navbar_menus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navbar.navbar-dropdown"
+    },
+    "callback_button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "actions.button"
+    },
+    "brand_name": {
+      "type": "string",
+      "required": true,
+      "default": "Brand Name"
+    },
+    "navbar_menus_heading": {
+      "type": "string",
+      "required": false,
+      "default": "Menu"
+    }
+  }
+}

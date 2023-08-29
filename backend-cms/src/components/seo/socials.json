@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_seo_socials",
+  "info": {
+    "displayName": "Socials",
+    "icon": "earth",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "social_icon": {
+      "type": "customField",
+      "customField": "plugin::heroicons-field.icon-picker",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "link_title": {
+      "type": "string",
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
