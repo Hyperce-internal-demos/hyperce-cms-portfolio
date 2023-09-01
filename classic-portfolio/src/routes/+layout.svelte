@@ -4,6 +4,21 @@
   import { SITE } from "$lib/utilities/config";
   import Navigation from "$lib/components/Navigation.svelte";
   import Footer from "$lib/components/Footer.svelte";
+
+  import { browser } from '$app/environment'
+  import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query'
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        enabled: browser,
+        staleTime: 60 * 1000,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false
+      },
+    },
+  })
+
 </script>
 
 <Meta
@@ -33,6 +48,8 @@
   additionalMetaTags={{}} 
 />
 
-<Navigation />
-<slot />
-<Footer />
+<QueryClientProvider client={queryClient}>
+  <Navigation />
+  <slot />
+  <Footer />
+</QueryClientProvider>

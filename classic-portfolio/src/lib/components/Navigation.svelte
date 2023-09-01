@@ -1,5 +1,48 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { client } from "$lib/utilities/GraphqlClient";
+  import { createQuery } from '@tanstack/svelte-query'
+
+  const query = `query {
+    navbars(filters: {isFinal: {eq: true}}) {
+      data{
+        attributes{
+          navbar_items{
+            placeholder,
+            redirect_link,
+            phrase
+          }
+          navbar_menus{
+            icon,
+            title,
+            description
+          }
+          callback_button{
+            placeholder,
+            redirect_link,
+            phrase
+          }
+          brand_name,
+          navbar_menus_heading
+        }
+      }
+    }
+  }`;
+
+  async function getData(query) {
+    try {
+      const rawData = await client.request(query);
+      return rawData.data.navbars.data[0].attributes
+    } catch (error) {
+      console.log("error: ", error)
+    }
+  }
+
+  const data = createQuery({
+    queryKey: ['navbar', query],
+    queryFn: () => getData(query),
+  })
+
   type ActiveNav = "home" | "about" | "pricing" | "contact";
 
   let activeNav: ActiveNav; 
@@ -21,7 +64,15 @@
     <div class="relative md:flex md:items-center md:justify-between">
 
       <div class="flex items-center justify-between">
-        <a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label="Brand">Hyperce</a>
+        <a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label="Brand">
+          {#if $data.isLoading}
+            Loading...
+            {:else if $data.isSuccess}
+            {$data.data.brand_name}
+            {:else if $data.isRefetching}
+            is Refetching...
+          {/if}
+        </a>
         <div class="md:hidden">
           <button type="button" class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
             <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

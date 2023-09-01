@@ -6,6 +6,8 @@
   import Blogs from "$lib/components/Home/Blogs.svelte";
   import FeaturesGeneral from "$lib/components/Home/FeaturesGeneral.svelte";
   import ClientCallback from "$lib/components/Home/ClientCallback.svelte";
+
+
 </script>
 
 <Hero />
