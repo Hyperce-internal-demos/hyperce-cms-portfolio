@@ -19,8 +19,14 @@
         "sections.features-general",
         "sections.clients",
         "sections.statistics",
-        "sections.feature-cards"
+        "sections.feature-cards",
+        "sections.client-callback"
       ]
+    },
+    "isFinal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

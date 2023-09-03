@@ -5,9 +5,9 @@ class GraphQLClient {
     this.endpoint = endpoint;
   }
 
-  async request(query) {
+  request = async (query, customFetch = fetch) => {
     try {
-      const response = await fetch(this.endpoint, {
+      const response = await customFetch(this.endpoint, {
         method: 'POST',
         headers: {
           'Accept-Encoding': 'gzip, deflate, br',
@@ -32,6 +32,8 @@ class GraphQLClient {
   }
 }
 
-// Example usage
-const graphqlEndpoint = PUBLIC_STRAPI_BASE_URL + "/graphql";
-export const client = new GraphQLClient(graphqlEndpoint);
+
+export const createGraphQLClient = (customFetch = fetch) => {
+  const graphqlEndpoint = PUBLIC_STRAPI_BASE_URL + "/graphql";
+  return new GraphQLClient(graphqlEndpoint, customFetch);
+};

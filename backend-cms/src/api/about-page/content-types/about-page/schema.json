@@ -27,6 +27,11 @@
       "type": "richtext",
       "default": "This is about is..",
       "required": true
+    },
+    "isFinal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

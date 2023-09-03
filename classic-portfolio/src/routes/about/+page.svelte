@@ -4,12 +4,15 @@
     import Blockquote from "$lib/components/Blockquote.svelte";
     import SvelteMarkdown from "svelte-markdown";
     import List from "$lib/components/List.svelte";
+    import { createQuery } from "@tanstack/svelte-query";
+    import { createGraphQLClient } from "$lib/utilities/GraphqlClient.js";
+    import { about_query } from "$lib/utilities/queries";
 
     let about;
-    export let data;
-    $: console.log(data)
-    $: about = data.aboutPage.data.attributes
-
+    const client = createGraphQLClient(fetch);
+    const rawData = createQuery(['about'], async () => await client.request(about_query))
+    $: about = $rawData.data?.data.aboutPage.data.attributes
+    $: console.log("about: ", about)
 </script>
 <div class="w-full relative h-full md:pb-44">
     <Hero />
@@ -22,11 +25,11 @@
             <!-- Content -->
             <div class="space-y-5 md:space-y-8">
                 <div class="space-y-3">
-                    <h2 class="text-xl font-bold md:text-3xl  uppercase  dark:text-white">{about.heading}</h2>
+                    <h2 class="text-xl font-bold md:text-3xl  uppercase  dark:text-white">{about?.heading}</h2>
             
                     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
                         <SvelteMarkdown 
-                        source={about.content} 
+                        source={about?.content} 
                         renderers={{ image: Image, blockquote: Blockquote, list: List }}/>
                     </article>
                 </div>

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "seo",
     "pluralName": "seos",
-    "displayName": "SEO"
+    "displayName": "SEO",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "seo.seo-informations"
+    },
+    "isFinal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_client_callbacks",
+  "info": {
+    "displayName": "Client_Callback",
+    "icon": "phone",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mini_caption": {
+      "type": "string",
+      "default": "Small business solutions"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "actions.button"
+    },
+    "existing_user_heading": {
+      "type": "string",
+      "default": "Trust pilot"
+    },
+    "existing_user_description": {
+      "type": "string",
+      "default": "Rated best over 37k reviews"
+    },
+    "existing_users": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

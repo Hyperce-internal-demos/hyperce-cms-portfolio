@@ -41,6 +41,11 @@
       "type": "component",
       "repeatable": false,
       "component": "sections.clients"
+    },
+    "isFinal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
