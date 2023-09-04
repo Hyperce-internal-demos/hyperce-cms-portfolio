@@ -7,7 +7,7 @@ export const load = async () => {
             staleTime: Infinity,
             refetchOnWindowFocus: false,
             refetchOnMount: false,
-            cacheTime: 100 * 1000,
+            cacheTime: 200 * 1000,
           },
         },
     })

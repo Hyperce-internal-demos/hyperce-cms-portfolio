@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_components_featured_cards",
+  "collectionName": "components_components_cards_featureds",
   "info": {
-    "displayName": "featured_card",
-    "icon": "server",
+    "displayName": "cards_featured",
+    "icon": "connector",
     "description": ""
   },
   "options": {},
@@ -17,8 +17,13 @@
     },
     "button": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "actions.button"
+    },
+    "icon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::heroicons-field.icon-picker"
     }
   }
 }

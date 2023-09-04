@@ -32,6 +32,20 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Hero",
+        "FeatureCards",
+        "FeaturesGeneral",
+        "Clients",
+        "Testimonials",
+        "Blogs",
+        "ClientCallback"
+      ],
+      "default": "ClientCallback",
+      "required": true
     }
   }
 }

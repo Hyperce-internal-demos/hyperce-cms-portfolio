@@ -17,6 +17,20 @@
     "description": {
       "type": "string",
       "required": false
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Hero",
+        "FeatureCards",
+        "FeaturesGeneral",
+        "Clients",
+        "Testimonials",
+        "Blogs",
+        "ClientCallback"
+      ],
+      "required": true,
+      "default": "FeaturesGeneral"
     }
   }
 }

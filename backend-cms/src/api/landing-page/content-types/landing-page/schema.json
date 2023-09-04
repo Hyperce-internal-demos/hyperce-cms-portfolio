@@ -19,8 +19,8 @@
         "sections.features-general",
         "sections.clients",
         "sections.statistics",
-        "sections.feature-cards",
-        "sections.client-callback"
+        "sections.client-callback",
+        "sections.feature-cards"
       ]
     },
     "isFinal": {

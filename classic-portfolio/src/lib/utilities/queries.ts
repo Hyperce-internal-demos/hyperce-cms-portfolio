@@ -189,3 +189,115 @@ export const footer_query = `query{
       }
     }
 }`;
+
+export const landingPage_query = `query{
+  landingPages(filters: {isFinal: {eq: true}}) {
+		data{
+      attributes{
+        isFinal,
+        ...on LandingPage{
+          sections{
+            ...on ComponentSectionsHero{
+              component_type,
+              HeroTitle: title,
+              HeroDescription: description,
+              media{
+                data{
+                  attributes{
+                    url,
+                    alternativeText
+                  }
+                }
+              },
+              button{
+                placeholder,
+                redirect_link,
+                phrase
+              }
+            },
+            ...on ComponentSectionsFeatureCards{
+              componentType: component_type
+              FeatureCardsTitle: title 
+              cards{
+                title,
+                description,
+                button{
+                  placeholder,
+                  redirect_link,
+                  phrase
+                }
+              }
+            },
+            ...on ComponentSectionsFeaturesGeneral{
+              heading,
+              features_list,
+              FeaturesGeneralDescription: description
+            },
+            ...on ComponentSectionsClients{
+              ClientsHeading: heading,
+              clients_logo{
+                data{
+                  attributes{
+                    url,
+                    alternativeText
+                  }
+                }
+              }
+            },
+            ...on ComponentSectionsStatistics{
+              testimonial{
+                title,
+                description,
+                testimonial,
+                author{
+                  data{
+                    attributes{
+                      name,
+                      avatar{
+                        data{
+                          attributes{
+                            url,
+                            alternativeText
+                          }
+                        }
+                      }
+                      email
+                    }
+                  }
+                }
+              }
+            },
+            ...on ComponentSectionsClientCallback{
+              mini_caption,
+              title,
+              button{
+                placeholder,
+                redirect_link,
+                phrase
+              },
+              existing_user_heading,
+              existing_user_description,
+              existing_users{
+                data{
+                  attributes{
+                    username,
+                    name,
+                    avatar{
+                      data{
+                        attributes{
+                          name,
+                          url,
+                          alternativeText
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`;
