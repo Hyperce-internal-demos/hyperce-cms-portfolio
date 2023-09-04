@@ -219,7 +219,8 @@ export const landingPage_query = `query{
               componentType: component_type
               FeatureCardsTitle: title 
               cards{
-                title,
+                title
+                icon
                 description,
                 button{
                   placeholder,
