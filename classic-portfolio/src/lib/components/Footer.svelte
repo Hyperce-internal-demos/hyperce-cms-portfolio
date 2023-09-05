@@ -1,61 +1,63 @@
+<script>
+  import { createGraphQLClient } from "$lib/utilities/GraphqlClient";
+  import { footer_query } from "$lib/utilities/queries";
+  import { createQuery } from "@tanstack/svelte-query";
+
+  let footer;
+  const client = createGraphQLClient(fetch);
+  const footerRawData = createQuery(['footer'], async () => await client.request(footer_query))
+
+  $: footer = $footerRawData.data?.data?.footers?.data[0]?.attributes
+  $: console.log("footer: ", footer)
+</script>
+
 <footer class="w-full max-w-[85rem] py-12 px-4 sm:px-6 lg:px-8 mx-auto">
   <!-- Grid -->
   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10">
     <div class="col-span-full hidden lg:col-span-1 lg:block">
-      <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">Hyperce</a>
+      <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand">{footer?.brand_name ?? ""}</a>
       <p class="mt-3 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-        Your Ecommerce Suite Partner 
+        {footer?.brand_description ?? ""}
       </p>
     </div>
     <!-- End Col -->
 
-    <div>
-      <h4 class="text-base font-semibold text-gray-900 dark:text-gray-100">Products</h4>
-
-      <div class="mt-3 grid space-y-3 text-sm">
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Pricing</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Changelog</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Docs</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Download</a></p>
-      </div>
-    </div>
-    <!-- End Col -->
-
-    <div>
-      <h4 class="text-base font-semibold text-gray-900 dark:text-gray-100">Company</h4>
-
-      <div class="mt-3 grid space-y-3 text-sm">
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">About us</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Blog</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Careers</a> <span class="inline text-violet-700 dark:text-violet-600">— We're hiring</span></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Customers</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Newsroom</a></p>
-        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="#">Sitemap</a></p>
-      </div>
-    </div>
-    <!-- End Col -->
-
-
-    <div class="col-span-2">
-      <h4 class="font-semibold text-gray-800">Stay up to date</h4>
-
-      <form>
-        <div class="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:gap-3  rounded-md p-2 ps-0">
-          <div class="w-full">
-            <label for="hero-input" class="sr-only">Search</label>
-            <input type="text" id="hero-input" name="hero-input" class="py-3 px-4 bg-gray-200 block w-full border-transparent shadow-sm rounded-md focus:z-10 focus:border-violet-500 focus:ring-violet-500" placeholder="Enter your email">
+    {#if footer}
+      {#each footer.columns as column}
+        <div>
+          <h4 class="text-base font-semibold text-gray-900 dark:text-gray-100">{column.column_heading}</h4>
+          <div class="mt-3 grid space-y-3 text-sm">
+            {#each column.footer_items as item}
+              <p>
+                <a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200" href="{item.redirect_link}">{item.placeholder}</a>
+                {#if item.phrase}
+                  <span class="text-gray-400 dark:text-gray-600">{item.phrase}</span>
+                {/if}
+              </p>
+            {/each}
           </div>
-          <a class="w-full sm:w-auto whitespace-nowrap inline-flex justify-center items-center gap-x-3 text-center bg-violet-800 hover:bg-violet-700 border border-transparent text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-white text-base py-3 px-4 dark:text-violet-500 dark:border-violet-900 dark:hover:border-violet-700 transition py-3 px-4" href="#">
-            Subscribe
-          </a>
+          
         </div>
-        <p class="mt-3 text-sm text-gray-500">
-          New products or big discounts. Never spam.
-        </p>
-      </form>
-    </div>
-    <!-- End Col -->
-    <!-- End Col -->
+      {/each}
+
+      <div class="col-span-2">
+        <h4 class="font-semibold text-gray-800">{footer?.form.title}</h4>
+      
+        <form>
+          <div class="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:gap-3 rounded-md p-2 ps-0">
+            <div class="w-full">
+              <label for="hero-input" class="sr-only">Search</label>
+              <input type="text" id="hero-input" name="hero-input" class="py-3 px-4 bg-gray-200 block w-full border-transparent shadow-sm rounded-md focus:z-10 focus:border-violet-500 focus:ring-violet-500" placeholder="Enter your email">
+            </div>
+            <a class="w-full sm:w-auto whitespace-nowrap inline-flex justify-center items-center gap-x-3 text-center bg-violet-800 hover:bg-violet-700 border border-transparent text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 transition-all text-white text-base py-3 px-4 dark:text-violet-500 dark:border-violet-900 dark:hover:border-violet-700 transition py-3 px-4" href="#">
+              Subscribe
+            </a>
+          </div>
+          <p class="mt-3 text-sm text-gray-500">{footer?.form.description}</p>
+        </form>
+      </div>
+    {/if}
+
   </div>
   <!-- End Grid -->
 

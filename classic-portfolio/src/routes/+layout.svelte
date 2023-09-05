@@ -38,7 +38,7 @@
   additionalMetaTags={{}} 
 />
 
-<QueryClientProvider client={data.queryClient}>
+<QueryClientProvider client={data?.queryClient}>
   <Navigation />
   <slot />
   <Footer />

@@ -32,7 +32,6 @@ class GraphQLClient {
   }
 }
 
-
 export const createGraphQLClient = (customFetch = fetch) => {
   const graphqlEndpoint = PUBLIC_STRAPI_BASE_URL + "/graphql";
   return new GraphQLClient(graphqlEndpoint, customFetch);

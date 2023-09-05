@@ -20,7 +20,7 @@
 </script>
 
 {#if landingPage}
-  {#each landingPage.sections as section}
+  {#each landingPage?.sections as section}
       {#if "component_type_Hero" in section && section["component_type_Hero"] === "Hero"}
         <Hero data={section} />
       {:else if "component_type_FeatureCards" in section && section["component_type_FeatureCards"] === "FeatureCards"}
