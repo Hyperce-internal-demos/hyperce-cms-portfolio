@@ -1,6 +1,5 @@
 <script>
   export let data;
-  $: console.log("feature card: ", data)
 </script>
 
 <!-- Icon Blocks -->

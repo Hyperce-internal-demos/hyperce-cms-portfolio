@@ -190,74 +190,82 @@ export const footer_query = `query{
     }
 }`;
 
-export const landingPage_query = `query{
-  landingPages(filters: {isFinal: {eq: true}}) {
-		data{
-      attributes{
-        isFinal,
-        ...on LandingPage{
-          sections{
-            ...on ComponentSectionsHero{
-              component_type,
-              HeroTitle: title,
-              HeroDescription: description,
-              media{
-                data{
-                  attributes{
-                    url,
+export const landingPage_query = `query {
+  landingPages(filters: { isFinal: { eq: true } }) {
+    data {
+      attributes {
+        isFinal
+        ... on LandingPage {
+          sections {
+            ... on ComponentSectionsHero {
+              component_type_Hero: component_type
+              HeroTitle: title
+              HeroDescription: description
+              media {
+                data {
+                  attributes {
+                    url
                     alternativeText
                   }
                 }
-              },
-              button{
-                placeholder,
-                redirect_link,
+              }
+              button {
+                placeholder
+                redirect_link
                 phrase
               }
-            },
-            ...on ComponentSectionsFeatureCards{
-              componentType: component_type
-              FeatureCardsTitle: title 
-              cards{
+            }
+            ... on ComponentSectionsFeatureCards {
+              component_type_FeatureCards: component_type
+              FeatureCardsTitle: title
+              cards {
                 title
                 icon
-                description,
-                button{
-                  placeholder,
-                  redirect_link,
+                description
+                button {
+                  placeholder
+                  redirect_link
                   phrase
                 }
               }
-            },
-            ...on ComponentSectionsFeaturesGeneral{
-              heading,
-              features_list,
+            }
+            ... on ComponentSectionsFeaturesGeneral {
+              component_type_FeaturesGeneral: component_type
+              heading
+              features_list
               FeaturesGeneralDescription: description
-            },
-            ...on ComponentSectionsClients{
-              ClientsHeading: heading,
-              clients_logo{
-                data{
-                  attributes{
-                    url,
+            }
+            ... on ComponentSectionsClients {
+              component_type_Clients: component_type
+              ClientsHeading: heading
+              clients_logo {
+                data {
+                  attributes {
+                    url
                     alternativeText
                   }
                 }
               }
-            },
-            ...on ComponentSectionsStatistics{
-              testimonial{
-                title,
-                description,
-                testimonial,
-                author{
-                  data{
-                    attributes{
-                      name,
-                      avatar{
-                        data{
-                          attributes{
-                            url,
+            }
+            ... on ComponentSectionsStatistics {
+              component_type_Testimonial: component_type
+              StatisticCards: cards{
+                data_heading
+                description
+              }
+              testimonial {
+                title
+                description
+                testimonial
+                author {
+                  data {
+                    attributes {
+                      name
+                      position
+                      avatar {
+                        data {
+                          attributes {
+                            url
                             alternativeText
                           }
                         }
@@ -267,27 +275,28 @@ export const landingPage_query = `query{
                   }
                 }
               }
-            },
-            ...on ComponentSectionsClientCallback{
-              mini_caption,
-              title,
-              button{
-                placeholder,
-                redirect_link,
+            }
+            ... on ComponentSectionsClientCallback {
+              component_type_ClientCallback: component_type
+              mini_caption
+              title
+              button {
+                placeholder
+                redirect_link
                 phrase
-              },
-              existing_user_heading,
-              existing_user_description,
-              existing_users{
-                data{
-                  attributes{
-                    username,
-                    name,
-                    avatar{
-                      data{
-                        attributes{
-                          name,
-                          url,
+              }
+              existing_user_heading
+              existing_user_description
+              existing_users {
+                data {
+                  attributes {
+                    username
+                    name
+                    avatar {
+                      data {
+                        attributes {
+                          name
+                          url
                           alternativeText
                         }
                       }
@@ -301,4 +310,5 @@ export const landingPage_query = `query{
       }
     }
   }
-}`;
+}
+`;

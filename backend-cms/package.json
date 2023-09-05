@@ -1,20 +1,26 @@
 {
   "name": "my-project",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
+    "develop": "npx patch-package && strapi develop",
+    "start": "npx patch-package && strapi start",
+    "build": "npx patch-package && strapi build",
+    "strapi": "strapi",
+    "postinstall": "patch-package",
+    "generate-admin-patches": "npx patch-package @strapi/admin",
+    "apply-admin-patches": "npx patch-package"
   },
   "dependencies": {
+    "@strapi/admin": "^4.13.2",
     "@strapi/plugin-graphql": "^4.12.7",
     "@strapi/plugin-i18n": "4.12.7",
     "@strapi/plugin-users-permissions": "4.12.7",
     "@strapi/strapi": "4.12.7",
     "better-sqlite3": "8.5.0",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "strapi-plugin-heroicons-field": "^0.0.3"
   },
   "author": {

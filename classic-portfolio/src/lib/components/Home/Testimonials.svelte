@@ -1,3 +1,13 @@
+<script>
+  import { PUBLIC_STRAPI_BASE_URL } from "$env/static/public";
+
+  export let data;
+  
+  const words = data?.testimonial.title.split(" ");
+  const lastWord = words.pop();
+  const remainingString = words.join(" ");
+</script>
+
 <!-- Testimonials with Stats -->
 <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 md:py-20 lg:py-24 mt-0 mx-auto py-8">
   <!-- Grid -->
@@ -6,10 +16,10 @@
       <!-- Title -->
       <div class="mb-8">
         <h2 class="mb-2 text-3xl text-gray-800 font-bold lg:text-4xl dark:text-gray-200">
-          It's all about <a href="#" class="text-green-700">speed</a>
+          {remainingString} <a href="#" class="text-green-700">{lastWord}</a>
         </h2>
         <p class="text-gray-600 dark:text-gray-400">
-          We provide you with a test account that can be set up in seconds. Our main focus is getting responses to you as soon as we can.
+          {data?.testimonial.description}
         </p>
       </div>
       <!-- End Title -->
@@ -22,18 +32,18 @@
 
         <div class="relative z-10">
           <p class="text-xl italic text-gray-800 dark:text-white">
-            Amazing people to work with. Very fast and professional partner.
+            {data?.testimonial.testimonial}
           </p>
         </div>
 
         <footer class="mt-6">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description">
+              <img class="h-16 w-16 rounded-full" src="{PUBLIC_STRAPI_BASE_URL + data?.testimonial.author.data.attributes.avatar.data.attributes.url}" alt="{data?.testimonial.author.data.attributes.avatar.data.attributes.alternativeText ?? "user-image"}">
             </div>
             <div class="grow ml-4">
-              <div class="font-semibold text-gray-800 dark:text-gray-200">Josh Grazioso</div>
-              <div class="text-xs text-gray-500">Director Payments & Risk | Airbnb</div>
+              <div class="font-semibold text-gray-800 dark:text-gray-200">{data?.testimonial.author.data.attributes.name ?? "Client"}</div>
+              <div class="text-xs text-gray-500">{data?.testimonial.author.data.attributes.position ?? "Client"}</div>
             </div>
           </div>
         </footer>
@@ -46,47 +56,16 @@
       <div class="space-y-6 sm:space-y-8">
         <!-- List -->
         <ul class="grid grid-cols-2 divide-y divide-y-2 divide-x divide-x-2 divide-gray-200 overflow-hidden dark:divide-gray-700">
-          <li class="flex flex-col -m-0.5 p-4 sm:p-8">
-            <div class="flex items-end gap-x-2 text-3xl sm:text-5xl font-bold text-gray-800 mb-2 dark:text-gray-200">
-              45k+
-            </div>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              users - from new startups to public companies
-            </p>
-          </li>
-
-          <li class="flex flex-col -m-0.5 p-4 sm:p-8">
-            <div class="flex items-end gap-x-2 text-3xl sm:text-5xl font-bold text-gray-800 mb-2 dark:text-gray-200">
-              <svg class="w-4 h-4 text-blue-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 14.4452C9 14.9504 8.55229 15.36 8 15.36C7.44772 15.36 7 14.9504 7 14.4452V3.38868L1.70711 8.23079C1.31658 8.58806 0.683417 8.58806 0.292893 8.23079C-0.0976311 7.87353 -0.0976311 7.29429 0.292893 6.93703L7.11612 0.694919C7.60427 0.248339 8.39573 0.248341 8.88388 0.694919L15.7071 6.93703C16.0976 7.29429 16.0976 7.87353 15.7071 8.23079C15.3166 8.58806 14.6834 8.58806 14.2929 8.23079L9 3.38868V14.4452Z" fill="currentColor"/>
-              </svg>
-              23%
-            </div>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              increase in traffic on webpages with Looms
-            </p>
-          </li>
-
-          <li class="flex flex-col -m-0.5 p-4 sm:p-8">
-            <div class="flex items-end gap-x-2 text-3xl sm:text-5xl font-bold text-gray-800 mb-2 dark:text-gray-200">
-              <svg class="w-4 h-4 text-blue-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 14.4452C9 14.9504 8.55229 15.36 8 15.36C7.44772 15.36 7 14.9504 7 14.4452V3.38868L1.70711 8.23079C1.31658 8.58806 0.683417 8.58806 0.292893 8.23079C-0.0976311 7.87353 -0.0976311 7.29429 0.292893 6.93703L7.11612 0.694919C7.60427 0.248339 8.39573 0.248341 8.88388 0.694919L15.7071 6.93703C16.0976 7.29429 16.0976 7.87353 15.7071 8.23079C15.3166 8.58806 14.6834 8.58806 14.2929 8.23079L9 3.38868V14.4452Z" fill="currentColor"/>
-              </svg>
-              9.3%
-            </div>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              boost in reply rates across sales outreach
-            </p>
-          </li>
-
-          <li class="flex flex-col -m-0.5 p-4 sm:p-8">
-            <div class="flex items-end gap-x-2 text-3xl sm:text-5xl font-bold text-gray-800 mb-2 dark:text-gray-200">
-              2x
-            </div>
-            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              faster than previous Preline versions
-            </p>
-          </li>
+          {#each data.StatisticCards as card, cardIndex}
+            <li class="flex flex-col -m-0.5 p-4 sm:p-8" key={cardIndex.toString()}>
+              <div class="flex items-end gap-x-2 text-3xl sm:text-5xl font-bold text-gray-800 mb-2 dark:text-gray-200">
+                {card.data_heading}
+              </div>
+              <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                {card.description}
+              </p>
+            </li>
+          {/each}
         </ul>
         <!-- End List -->
       </div>

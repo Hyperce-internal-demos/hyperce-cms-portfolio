@@ -1,5 +1,5 @@
 <script>
-  import Clients from "$lib/components/Clients.svelte";
+  import Clients from "$lib/components/Home/Clients.svelte";
   import FeatureCard from "$lib/components/Home/FeatureCard.svelte";
   import Hero from "$lib/components/Home/Hero.svelte";
   import Testimonials from "$lib/components/Home/Testimonials.svelte";
@@ -21,27 +21,23 @@
 
 {#if landingPage}
   {#each landingPage.sections as section}
-    {#if section.component_type || section.componentType}
-      {#if section.component_type == "Hero" || section.componentType == 'Hero'}
+      {#if "component_type_Hero" in section && section["component_type_Hero"] === "Hero"}
         <Hero data={section} />
-      {:else if section.component_type === 'FeatureCards' || section.componentType === 'FeatureCards'}
+      {:else if "component_type_FeatureCards" in section && section["component_type_FeatureCards"] === "FeatureCards"}
         <FeatureCard data={section} />
-      {:else if section.component_type || section.componentType === 'FeaturesGeneral'}
+      {:else if "component_type_FeaturesGeneral" in section && section["component_type_FeaturesGeneral"] === "FeaturesGeneral"}
         <FeaturesGeneral data={section} />
-      {:else if section.component_type || section.componentType === 'Clients'}
+      {:else if "component_type_Clients" in section && section["component_type_Clients"] === "Clients"}
         <Clients data={section} />
-      {:else if section.component_type || section.componentType === 'testimonial'}
+      {:else if "component_type_Testimonial" in section && section["component_type_Testimonial"] === "Testimonials"}
         <Testimonials data={section} />
+        <hr />
+      {:else if "component_type_ClientCallback" in section && section["component_type_ClientCallback"] === "ClientCallback"}
+      <Blogs />
+        
+      <ClientCallback data={section} />
       {:else}
         <!-- Handle other cases as needed -->
-      {/if}
     {/if}
   {/each}
 {/if}
-
-
-
-
-<hr />
-<Blogs />
-<ClientCallback />

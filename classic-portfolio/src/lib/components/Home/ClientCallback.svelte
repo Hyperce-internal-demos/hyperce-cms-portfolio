@@ -1,3 +1,13 @@
+<script>
+  import { PUBLIC_STRAPI_BASE_URL } from "$env/static/public";
+
+  export let data;
+  
+  const words = data?.title.split(" ");
+  const lastWord = words.pop();
+  const remainingString = words.join(" ");
+</script>
+
 <!-- Hero -->
 <div class="overflow-hidden bg-gray-100">
     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-40">
@@ -5,33 +15,35 @@
         <!-- Title -->
         <div class="text-center">
           <p class="text-xs font-semibold text-gray-500 tracking-wide uppercase mb-3 dark:text-gray-200">
-            Small business solutions
+            {data?.mini_caption ?? ""}
           </p>
           <h1 class="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight dark:text-gray-200">
-            Turn online shoppers into <span class="text-violet-500">lifetime customers</span>
+            {remainingString ?? ""} <span class="text-violet-500">{lastWord ?? ""}</span>
           </h1>
         </div>
         <!-- End Title -->
 
-        <button type="button" class="mx-auto w-[150px] py-3 px-4 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-gray-800 text-white align-middle shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
-            Signup free
+        <a href={data?.button.redirect_link ?? "/"} type="button" class="mx-auto w-[150px] py-3 px-4 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-gray-800 text-white align-middle shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-violet-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800">
+            {data?.button.placeholder}
             <svg class="w-2.5 h-auto" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M1 7C0.447715 7 -3.73832e-07 7.44771 -3.49691e-07 8C-3.2555e-07 8.55228 0.447715 9 1 9L13.0858 9L7.79289 14.2929C7.40237 14.6834 7.40237 15.3166 7.79289 15.7071C8.18342 16.0976 8.81658 16.0976 9.20711 15.7071L16.0303 8.88388C16.5185 8.39573 16.5185 7.60427 16.0303 7.11612L9.20711 0.292893C8.81658 -0.0976318 8.18342 -0.0976318 7.79289 0.292893C7.40237 0.683417 7.40237 1.31658 7.79289 1.70711L13.0858 7L1 7Z" fill="currentColor"/>
             </svg>
-        </button>
+          </a>
   
         <!-- Avatar Group -->
         <div class="sm:flex sm:justify-center sm:items-center text-center sm:text-left">
           <div class="flex-shrink-0 pb-5 sm:flex sm:pb-0 sm:pr-5">
             <!-- Avatar Group -->
             <div class="flex justify-center -space-x-3">
-              <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
-              <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800" src="https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
-              <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800" src="https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80" alt="Image Description">
-              <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description">
-              <span class="inline-flex items-center justify-center h-8 w-8 rounded-full ring-2 ring-white bg-gray-800 dark:bg-gray-900 dark:ring-gray-800">
-                <span class="text-xs font-medium leading-none text-white uppercase">7k+</span>
+              {#each data?.existing_users.data as item}
+                <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800" src={PUBLIC_STRAPI_BASE_URL + item.attributes.avatar.data.attributes.url} alt={item.attributes.avatar.data.attributes.alternativeText ?? "image"}>
+              {/each}
+              <span class="inline-flex justify-center items-center h-8 w-8 rounded-full bg-violet-600 text-white">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                </svg>
               </span>
+              
             </div>
             <!-- End Avatar Group -->
           </div>
@@ -39,8 +51,8 @@
           <div class="border-t sm:border-t-0 sm:border-l border-gray-200 w-32 h-px sm:w-auto sm:h-full mx-auto sm:mx-0"></div>
   
           <div class="pt-5 sm:pt-0 sm:pl-5">
-            <div class="text-lg font-semibold text-gray-800 dark:text-gray-200">Trust pilot</div>
-            <div class="text-sm text-gray-500">Rated best over 37k reviews</div>
+            <div class="text-lg font-semibold text-gray-800 dark:text-gray-200">{data?.existing_user_heading}</div>
+            <div class="text-sm text-gray-500">{data?.existing_user_description}</div>
           </div>
         </div>
         <!-- End Avatar Group -->
