@@ -3,6 +3,7 @@
     import Image from "$lib/components/Image.svelte";
     import Blockquote from "$lib/components/Blockquote.svelte";
     import SvelteMarkdown from "svelte-markdown";
+    import Markdown from "svelte-markdown";
     import List from "$lib/components/List.svelte";
     import { createQuery } from "@tanstack/svelte-query";
     import { createGraphQLClient } from "$lib/utilities/GraphqlClient.js";
@@ -28,7 +29,7 @@
                     <h2 class="text-xl font-bold md:text-3xl  uppercase  dark:text-white">{about?.heading}</h2>
             
                     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
-                        <SvelteMarkdown 
+                        <Markdown 
                         source={about?.content} 
                         renderers={{ image: Image, blockquote: Blockquote, list: List }}/>
                     </article>

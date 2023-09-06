@@ -2,7 +2,8 @@
   "collectionName": "components_components_faqs",
   "info": {
     "displayName": "Faq",
-    "icon": "bulletList"
+    "icon": "bulletList",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -20,6 +21,14 @@
     "description": {
       "type": "string",
       "default": "Answers to the most frequently asked questions."
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Faq"
+      ],
+      "default": "Faq",
+      "required": true
     }
   }
 }

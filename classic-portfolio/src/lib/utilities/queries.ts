@@ -128,37 +128,39 @@ export const contactPage_query = `query{
     }
 }`;
 
-export const pricingPage_query = `query{
-    pricingPages(filters: {isFinal: {eq: true}}) {
-        data{
-        attributes{
-          isFinal,
-          card{
-            title,
-            description,
-            phrase,
-            pricing,
-            features_list,
-            button{
-              placeholder,
-              redirect_link,
-              phrase
-            },
-          },
-          sections{
-            ...on ComponentComponentsFaq {
-              title,
-              description
-              question_answer {
-                question,
-                answer
-              }
+export const pricingPage_query = `query {
+  pricingPages(filters: { isFinal: { eq: true } }) {
+    data {
+      attributes {
+        isFinal
+        card {
+          title
+          description
+          phrase
+          pricing
+          features_list
+          button {
+            placeholder
+            redirect_link
+            phrase
+          }
+        }
+        sections {
+          ... on ComponentComponentsFaq {
+            component_type_Faq: component_type
+            title
+            description
+            question_answer {
+              question
+              answer
             }
           }
         }
       }
     }
-}`;
+  }
+}
+`;
 
 export const footer_query = `query{
     footers(filters: {isFinal: {eq: true}}) {

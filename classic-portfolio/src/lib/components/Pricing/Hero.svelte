@@ -2,6 +2,8 @@
   import Clients from "$lib/components/Clients.svelte";
   import Tabs from "$lib/components/Pricing/Tabs.svelte";
 
+  export let data;
+
 </script>
 <!-- Hero -->
 <div class="relative">
@@ -36,7 +38,7 @@
       </div>
       <!-- End Switch -->
 
-      <Tabs />
+      <Tabs data={data}/>
       
       <Clients />
     </div>
