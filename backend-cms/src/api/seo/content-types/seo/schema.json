@@ -14,7 +14,7 @@
   "attributes": {
     "SEO": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "seo.seo-informations"
     },
     "isFinal": {

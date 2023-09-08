@@ -4,9 +4,9 @@
   "version": "1.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "npx patch-package && strapi develop",
-    "start": "npx patch-package && strapi start",
-    "build": "npx patch-package && strapi build",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
     "strapi": "strapi",
     "postinstall": "patch-package",
     "generate-admin-patches": "npx patch-package @strapi/admin",
