@@ -16,7 +16,9 @@
     $: console.log("about: ", about)
 </script>
 <div class="w-full relative h-full md:pb-44">
-    <Hero />
+    {#if about}
+        <Hero data={about?.hero?.media?.data.attributes.url} />
+    {/if}
 
     <div class="h-full content md:-my-36">
         <!-- Blog Article -->

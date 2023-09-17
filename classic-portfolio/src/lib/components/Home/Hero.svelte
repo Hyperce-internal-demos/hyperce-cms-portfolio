@@ -14,9 +14,9 @@
     <video class="min-w-full min-h-full absolute object-cover" src={PUBLIC_STRAPI_BASE_URL + data?.media.data.attributes.url} type="video/mp4" autoplay muted loop></video>
   </div>
 
-  <!-- {#if data?.media.data.attributes.mime.startsWith("image")}
+  {#if data?.media.data.attributes.mime.startsWith("image")}
     <div class="w-full h-full absolute -z-10 top-0 bg-image-darken bg-no-repeat brightness-[0.30] w-full h-full bg-cover bg-no-repeat" style="background: url({PUBLIC_STRAPI_BASE_URL + data.media.data.attributes.url})"></div>
-  {/if} -->
+  {/if}
   
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
 

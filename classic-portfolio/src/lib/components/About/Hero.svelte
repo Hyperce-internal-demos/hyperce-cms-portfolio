@@ -1,6 +1,12 @@
+<script>
+  import { PUBLIC_STRAPI_BASE_URL } from "$env/static/public";
+
+  export let data;
+</script>
+
 <div class="hero-section h-[70vh] relative flex flex-col justify-center align-center">
     <div class="-z-10 h-[70vh] brightness-[0.25] absolute top-0 left-0 w-full h-full overflow-hidden">
-        <img class="bg-fixed min-w-full min-h-full bg-cover" src="https://images.livemint.com/img/2021/09/27/1600x900/AFP_9DD4KZ_1629870213363_1632742003316.jpg" alt="image">
+        <img class="bg-fixed min-w-full min-h-full bg-cover" src={PUBLIC_STRAPI_BASE_URL + data} alt="image">
     </div>
     
     <div class="md:-mt-20 mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">

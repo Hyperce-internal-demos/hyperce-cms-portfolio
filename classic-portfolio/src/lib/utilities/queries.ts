@@ -132,7 +132,9 @@ export const pricingPage_query = `query {
   pricingPages(filters: { isFinal: { eq: true } }) {
     data {
       attributes {
-        isFinal
+        isFinal,
+        title,
+        description
         card {
           title
           description
@@ -159,8 +161,7 @@ export const pricingPage_query = `query {
       }
     }
   }
-}
-`;
+}`;
 
 export const footer_query = `query{
     footers(filters: {isFinal: {eq: true}}) {
@@ -206,6 +207,7 @@ export const landingPage_query = `query {
               media {
                 data {
                   attributes {
+                    mime
                     url
                     alternativeText
                   }
