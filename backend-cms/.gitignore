@@ -107,5 +107,7 @@ coverage
 license.txt
 exports
 node_modules
+.cache
+cache
 
 .strapi-updater.json

@@ -1,4 +1,4 @@
-import HelloWorldButton from "./extensions/components/HelloWorld";
+// import HelloWorldButton from "./extensions/components/HelloWorld";
 import favicon from "./extensions/favicon.png"
 
 export default {
@@ -969,10 +969,5 @@ export default {
     tutorials: false,
     notifications: { releases: false },
   },
-  bootstrap(app) {
-    app.injectContentManagerComponent("listView", "actions", {
-      name: "HelloWorldButton",
-      Component: HelloWorldButton,
-    });
-  },
+  bootstrap() {},
 };
