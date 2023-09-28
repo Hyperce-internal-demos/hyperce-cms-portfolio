@@ -9,8 +9,8 @@ module.exports = ({ env }) => ({
         amazon: `https://email.${env('AWS_REGION')}.amazonaws.com`,
       },
       settings: {
-        defaultFrom: 'noreply@hyperce.io',
-        defaultReplyTo: 'noreply@hyperce.io',
+        defaultFrom: env('DEFAULT_FROM'),
+        defaultReplyTo: env("DEFAULT_REPLY_TO"),
       }
     },
   },

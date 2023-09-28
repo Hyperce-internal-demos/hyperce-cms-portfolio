@@ -223,7 +223,7 @@ export default {
         "Settings.permissions.users.form.sso.description": "When enabled (ON), users can login via SSO",
         "Settings.permissions.users.inactive": "Inactive",
         "Settings.permissions.users.lastname": "Lastname",
-        "Settings.permissions.users.listview.header.subtitle": "All the users who have access to the Hypercei admin panel",
+        "Settings.permissions.users.listview.header.subtitle": "All the users who have access to the Hyperce admin panel",
         "Settings.permissions.users.roles": "Roles",
         "Settings.permissions.users.strapi-author": "Author",
         "Settings.permissions.users.strapi-editor": "Editor",
