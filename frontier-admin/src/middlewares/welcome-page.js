@@ -8,7 +8,9 @@ async function isInitialized(strapi) {
     if (lodash.isEmpty(strapi.admin)) return true;
 
     // test if there is at least one admin
-    const anyAdministrator = await strapi.query('admin::user').findOne({ select: ['id'] });
+    const anyAdministrator = await strapi
+      .query("admin::user")
+      .findOne({ select: ["id"] });
 
     return !lodash.isNil(anyAdministrator);
   } catch (err) {

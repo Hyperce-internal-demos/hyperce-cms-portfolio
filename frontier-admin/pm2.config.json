@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "frontier-admin",
+      "script": "npm",
+      "args": "start"
+    }
+  ]
+}
