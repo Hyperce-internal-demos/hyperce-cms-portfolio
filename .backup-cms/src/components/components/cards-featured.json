@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_components_cards_featureds",
+  "info": {
+    "displayName": "cards_featured",
+    "icon": "connector",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "actions.button"
+    },
+    "icon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::heroicons-field.icon-picker"
+    }
+  }
+}

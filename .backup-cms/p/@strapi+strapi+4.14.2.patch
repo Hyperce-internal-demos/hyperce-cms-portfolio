@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/strapi/dist/commands/builders/admin.js b/node_modules/@strapi/strapi/dist/commands/builders/admin.js
+index 1c82e98..90dd13d 100644
+--- a/node_modules/@strapi/strapi/dist/commands/builders/admin.js
++++ b/node_modules/@strapi/strapi/dist/commands/builders/admin.js
+@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const chalk_1 = __importDefault(require("chalk"));
+-const admin_1 = __importDefault(require("@strapi/admin"));
++const admin_1 = __importDefault(require("@hyperce/strapi-admin"));
+ const utils_1 = require("@strapi/utils");
+ const ee_1 = __importDefault(require("../../utils/ee"));
+ const addSlash_1 = __importDefault(require("../../utils/addSlash"));

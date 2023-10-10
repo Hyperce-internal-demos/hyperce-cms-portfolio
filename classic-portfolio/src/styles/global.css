@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+    }
+  
+    body {
+      overscroll-behavior: contain;
+      -webkit-text-size-adjust: 100%;
+      font-family: 'Roboto', sans-serif;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      /* @apply flex min-h-screen flex-col; */
+    }
+  
+    /* section,
+    footer {
+      @apply mx-auto max-w-3xl px-4;
+    }
+    a {
+      @apply outline-2 outline-offset-1 
+      focus-visible:no-underline focus-visible:outline-dashed;
+    } */
+  
+    /* ===== scrollbar ===== */
+    html {
+      overflow-y: scroll;
+    }
+  
+    /* width */
+    /* ::-webkit-scrollbar {
+      @apply w-3;
+    } */
+  
+    /* Track */
+    ::-webkit-scrollbar-track {
+  /*    @apply bg-skin-fill;*/
+    }
+  
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+  /*    @apply bg-skin-card;*/
+    }
+  
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+  /*    @apply bg-skin-card-muted;*/
+    }
+  }

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_footer_forms",
+  "info": {
+    "displayName": "Form",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Stay up to date",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "receiver_mail": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

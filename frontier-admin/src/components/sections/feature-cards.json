@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_feature_cards",
+  "info": {
+    "displayName": "feature_cards",
+    "icon": "brush",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Hero",
+        "FeatureCards",
+        "FeaturesGeneral",
+        "Clients",
+        "Testimonials",
+        "Blogs",
+        "ClientCallback"
+      ],
+      "default": "FeatureCards",
+      "required": true
+    },
+    "cards": {
+      "displayName": "cards_featured",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.cards-featured"
+    }
+  }
+}

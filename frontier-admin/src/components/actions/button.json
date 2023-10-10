@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_actions_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "placeholder": {
+      "type": "string",
+      "default": "Button",
+      "required": true
+    },
+    "redirect_link": {
+      "type": "string"
+    },
+    "phrase": {
+      "type": "string"
+    }
+  }
+}

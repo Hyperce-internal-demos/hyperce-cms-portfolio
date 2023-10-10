@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_sections_features_generals",
+  "info": {
+    "displayName": "Feature_General",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "features_list": {
+      "type": "json"
+    },
+    "description": {
+      "type": "string",
+      "required": false
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Hero",
+        "FeatureCards",
+        "FeaturesGeneral",
+        "Clients",
+        "Testimonials",
+        "Blogs",
+        "ClientCallback"
+      ],
+      "required": true,
+      "default": "FeaturesGeneral"
+    }
+  }
+}

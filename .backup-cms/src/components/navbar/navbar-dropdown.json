@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_components_navbar_dropdowns",
+  "info": {
+    "displayName": "navbar-dropdown",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::heroicons-field.icon-picker"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

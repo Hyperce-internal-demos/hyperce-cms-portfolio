@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_components_faqs",
+  "info": {
+    "displayName": "Faq",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false,
+      "default": "Frequently asked questions"
+    },
+    "question_answer": {
+      "displayName": "faq-list",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.faq-list"
+    },
+    "description": {
+      "type": "string",
+      "default": "Answers to the most frequently asked questions."
+    },
+    "component_type": {
+      "type": "enumeration",
+      "enum": [
+        "Faq"
+      ],
+      "default": "Faq",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_seo_site_informations",
+  "info": {
+    "displayName": "Site_information",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "site_name": {
+      "type": "string",
+      "required": true
+    },
+    "language": {
+      "type": "string",
+      "required": true,
+      "default": "en-US"
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "website": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

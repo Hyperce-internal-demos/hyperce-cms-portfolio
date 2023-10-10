@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pricing_pages",
+  "info": {
+    "singularName": "pricing-page",
+    "pluralName": "pricing-pages",
+    "displayName": "Pricing Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.pricing-card",
+      "required": true
+    },
+    "isFinal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": false,
+      "default": "Simple, transparent pricing"
+    },
+    "description": {
+      "type": "string",
+      "default": "hatever your status, our offers evolve according to your needs."
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "components.faq"
+      ]
+    }
+  }
+}

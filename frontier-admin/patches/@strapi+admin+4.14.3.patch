@@ -1,0 +1,92 @@
+diff --git a/node_modules/@strapi/admin/admin/src/StrapiApp.js b/node_modules/@strapi/admin/admin/src/StrapiApp.js
+index bbe0ef2..ed4e047 100644
+--- a/node_modules/@strapi/admin/admin/src/StrapiApp.js
++++ b/node_modules/@strapi/admin/admin/src/StrapiApp.js
+@@ -34,10 +34,10 @@ class StrapiApp {
+       head: { favicon },
+       locales: ['en'],
+       menuLogo: Logo,
+-      notifications: { releases: true },
++      notifications: { releases: false },
+       themes: { light: lightTheme, dark: darkTheme },
+       translations: {},
+-      tutorials: true,
++      tutorials: false,
+     };
+     this.appPlugins = appPlugins || {};
+     this.library = library;
+diff --git a/node_modules/@strapi/admin/admin/src/pages/Admin/index.js b/node_modules/@strapi/admin/admin/src/pages/Admin/index.js
+index de3f0d8..412290f 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/Admin/index.js
++++ b/node_modules/@strapi/admin/admin/src/pages/Admin/index.js
+@@ -24,7 +24,6 @@ import Onboarding from './Onboarding';
+ const CM = lazy(() =>
+   import(/* webpackChunkName: "content-manager" */ '../../content-manager/pages/App')
+ );
+-const HomePage = lazy(() => import(/* webpackChunkName: "Admin_homePage" */ '../HomePage'));
+ const InstalledPluginsPage = lazy(() =>
+   import(/* webpackChunkName: "Admin_pluginsPage" */ '../InstalledPluginsPage')
+ );
+@@ -97,7 +96,7 @@ const Admin = () => {
+       >
+         <Suspense fallback={<LoadingIndicatorPage />}>
+           <Switch>
+-            <Route path="/" component={HomePage} exact />
++            <Route path="/" component={CM} exact />
+             <Route path="/me" component={ProfilePage} exact />
+             <Route path="/content-manager" component={CM} />
+             {routes}
+diff --git a/node_modules/@strapi/admin/admin/src/pages/SettingsPage/pages/ApplicationInfosPage/index.js b/node_modules/@strapi/admin/admin/src/pages/SettingsPage/pages/ApplicationInfosPage/index.js
+index d863c00..003814a 100644
+--- a/node_modules/@strapi/admin/admin/src/pages/SettingsPage/pages/ApplicationInfosPage/index.js
++++ b/node_modules/@strapi/admin/admin/src/pages/SettingsPage/pages/ApplicationInfosPage/index.js
+@@ -231,36 +231,6 @@ const ApplicationInfosPage = () => {
+                         )}
+                       </Flex>
+                     </GridItem>
+-                    <GridItem col={6} s={12}>
+-                      <Typography variant="sigma" textColor="neutral600" as="dt">
+-                        {formatMessage({
+-                          id: 'Settings.application.edition-title',
+-                          defaultMessage: 'current plan',
+-                        })}
+-                      </Typography>
+-                      <Flex gap={3} direction="column" alignItems="start" as="dd">
+-                        <Typography>
+-                          {formatMessage(
+-                            {
+-                              id: 'Settings.application.ee-or-ce',
+-                              defaultMessage:
+-                                '{communityEdition, select, true {Community Edition} other {Enterprise Edition}}',
+-                            },
+-                            { communityEdition }
+-                          )}
+-                        </Typography>
+-                        <Link
+-                          href="https://strapi.io/pricing-self-hosted"
+-                          isExternal
+-                          endIcon={<ExternalLink />}
+-                        >
+-                          {formatMessage({
+-                            id: 'Settings.application.link-pricing',
+-                            defaultMessage: 'See all pricing plans',
+-                          })}
+-                        </Link>
+-                      </Flex>
+-                    </GridItem>
+ 
+                     <GridItem col={6} s={12}>
+                       <Typography variant="sigma" textColor="neutral600" as="dt">
+diff --git a/node_modules/@strapi/admin/index.html b/node_modules/@strapi/admin/index.html
+index a00a161..80b01a0 100644
+--- a/node_modules/@strapi/admin/index.html
++++ b/node_modules/@strapi/admin/index.html
+@@ -6,7 +6,7 @@
+     <!-- Make the page mobile compatible -->
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <meta name="mobile-web-app-capable" content="yes" />
+-    <title>Strapi Admin</title>
++    <title>Hyperce Admin</title>
+   </head>
+   <body>
+     <!-- The app hooks into this div -->
