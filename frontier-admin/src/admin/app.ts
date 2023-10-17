@@ -1,5 +1,21 @@
 import favicon from "./extensions/favicon.png";
 
+const colors = {
+  // primary colors
+  primary100: "#DAF9F4",
+  primary200: "#B7F3EE",
+  primary500: "#357D8A",
+  primary600: "#266476",
+  primary700: "#1A4C63",
+
+  // secondary
+  secondary100: "#FFFBCC",
+  secondary200: "#FFF599",
+  secondary500: "#FFDE00",
+  secondary600: "#DBBB00",
+  secondary700: "#B79A00",
+};
+
 export default {
   config: {
     locales: ["en"],
@@ -7,18 +23,19 @@ export default {
     theme: {
       colors: {
         // primary colors
-        primary100: "#f0f0ff",
-        primary200: "#d9d8ff",
-        primary500: "#7b79ff",
-        primary600: "#4945ff",
-        primary700: "#271fe0",
+        ...colors,
         // button color
-        buttonPrimary500: "#7b79ff",
-        buttonPrimary600: "#4945ff",
+        buttonPrimary500: colors.primary500,
+        buttonPrimary600: colors.primary600,
       },
     },
     translations: {
       en: {
+        // content manager
+        "content-type-builder.notification.info.autoreaload-disable":
+          "Admin is in production mode, editing content types is disabled. Please switch to development mode by starting your server with `yarn develop`.",
+	
+	// app
         "app.components.BlockLink.blog": "",
         "app.components.BlockLink.blog.content": "",
         "app.components.BlockLink.cloud": "",
